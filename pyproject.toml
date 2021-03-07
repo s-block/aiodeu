@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "aiodeu"
+version = "0.1.0"
+description = ""
+authors = ["Josh Rowe <s-block@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+asyncio-redis = "^0.16.0"
+boto3 = "^1.17.21"
+faust = "^1.10.4"
+python-schema-registry-client = "^1.8.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+avro-python3 = "^1.10.1"
+confluent-kafka = "^1.6.0"
+flake8 = "^3.8.4"
+moto = "^2.0.1"
+pytest-asyncio = "^0.14.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests"
+]
+rootdir=./
