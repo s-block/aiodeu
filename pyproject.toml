@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "aiodeu"
-version = "0.1.0"
-description = ""
+version = "0.1.1"
+description = "aio data engineering utils"
 authors = ["Josh Rowe <s-block@users.noreply.github.com>"]
+homepage = "https://github.com/s-block/aiodeu"
 
 [tool.poetry.dependencies]
 python = "^3.9"

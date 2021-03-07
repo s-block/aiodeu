@@ -10,7 +10,7 @@ class BytesJsonEncoder(json.JSONEncoder):
             try:
                 return obj.decode("utf-8")
             except UnicodeDecodeError:
-                return str(obj)
+                return ""
         return super().default(obj)
 
 

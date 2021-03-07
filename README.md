@@ -2,9 +2,11 @@
 
 ## Setup
 ```bash
-pyenv install 3.8.1
-pyenv virtualenv 3.8.1 kc
-pyenv shell kc
+pyenv install 3.9.0
+pyenv virtualenv 3.9.0 aiodeu
+pyenv shell aiodeu
+pip install -r requirements.txt
+poetry install
 ```
 
 ## Test
@@ -47,3 +49,25 @@ kafka-topics --zookeeper localhost:2181 --delete --topic {{topic}}
 ```
 
 ### Consumer
+Faust consumer setup with certs
+
+```python
+import logging
+
+from aiodeu.app import create_app
+from aiodeu.config import Config
+
+logger = logging.getLogger(__name__)
+
+app = create_app(Config)
+
+topic = app.topic(Config.TOPIC_NAME)
+
+
+@app.agent(topic)
+async def etl(stream):
+    logger.info("Message received")
+    async for message in stream:
+        for record in message:
+            logger.info("Record per message")
+```
