@@ -48,10 +48,20 @@ Delete topic:
 kafka-topics --zookeeper localhost:2181 --delete --topic {{topic}}
 ```
 
-### Consumer
+### Faust Consumer
 Faust consumer setup with certs
 
+Extract certs from .jks file
+https://serverfault.com/questions/715827/how-to-generate-key-and-crt-file-from-jks-file-for-httpd-apache-server
+
+```bash
+keytool -importkeystore -srckeystore mycert.jks -destkeystore keystore.p12 -deststoretype PKCS12
+openssl pkcs12 -in keystore.p12 -nokeys -out cert.crt
+openssl pkcs12 -in keystore.p12 -nocerts -nodes -out key.key
+```
+
 ```python
+# app/agents.py
 import logging
 
 from aiodeu.app import create_app
@@ -70,4 +80,28 @@ async def etl(stream):
     async for message in stream:
         for record in message:
             logger.info("Record per message")
+```
+
+```dockerfile
+# Dockerfile
+FROM python:3.9.2-slim-buster
+
+ARG ENV_TYPE=base
+
+RUN adduser -D -H 1000
+
+RUN mkdir /faust
+WORKDIR /faust
+
+COPY requirements requirements
+RUN pip install -r requirements/$ENV_TYPE.txt
+
+COPY app app
+COPY tests tests
+
+RUN chown -R 1000 /faust
+
+USER 1000
+
+CMD [ "faust", "-A", "app.agents", "worker", "-l", "info" ]
 ```

@@ -4,7 +4,7 @@ import os
 class Config:
     DEBUG: bool = False
     APP_NAME: str = os.environ.get("APP_NAME", "app_consumer").rstrip()
-    BASE_DIR: str = os.path.dirname(os.path.dirname(__file__))
+    BASE_DIR: str = os.getcwd()
     TOPIC_NAME: str = os.environ.get("TOPIC_NAME", "test").rstrip()
     BROKER: str = os.environ.get("BROKER", "localhost:9092").rstrip()
     BROKER_LIST: list = [f"kafka://{b}" for b in os.environ.get("BROKER", "localhost:9092").split(",")]

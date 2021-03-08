@@ -28,8 +28,8 @@ def create_app(config: Type[Config]) -> faust.App:
     }
 
     if config.BROKER_CERT:
-        cert = write_to_file(os.path.join(Config.BASE_DIR, "client.cert"), config.BROKER_CERT)
-        key = write_to_file(os.path.join(Config.BASE_DIR, "client.key"), config.BROKER_KEY)
+        cert = write_to_file(os.path.join(config.BASE_DIR, "client.cert"), config.BROKER_CERT)
+        key = write_to_file(os.path.join(config.BASE_DIR, "client.key"), config.BROKER_KEY)
         ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
         ssl_context.load_cert_chain(cert, keyfile=key)
         app_kwargs.update({
@@ -37,7 +37,7 @@ def create_app(config: Type[Config]) -> faust.App:
         })
 
     new_app = faust.App(
-        Config.APP_NAME,
+        config.APP_NAME,
         **app_kwargs
     )
     return new_app
