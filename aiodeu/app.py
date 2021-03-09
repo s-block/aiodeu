@@ -15,7 +15,7 @@ codecs.register('AvroJsonCodec', AvroJsonCodec())
 logger = logging.getLogger(__name__)
 
 
-def create_app(config: Type[Config]) -> faust.App:
+def create_app(config: Type[Config], faust_app_kwargs: dict = {}) -> faust.App:
     app_kwargs = {
         "broker": config.BROKER_LIST,
         "value_serializer": "AvroJsonCodec",
@@ -24,8 +24,9 @@ def create_app(config: Type[Config]) -> faust.App:
         "topic_partitions": 12,
         "topic_allow_declare": False,
         "topic_disable_leader": True,
-        "consumer_auto_offset_reset": "latest"
+        "consumer_auto_offset_reset": "earliest"
     }
+    app_kwargs.update(faust_app_kwargs)
 
     if config.BROKER_CERT:
         cert = write_to_file(os.path.join(config.BASE_DIR, "client.cert"), config.BROKER_CERT)
