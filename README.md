@@ -20,9 +20,7 @@ pytest
 | ---- | ---- | ------- |
 | APP_NAME | str | "app_consumer" |
 | TOPIC_NAME | str | "test" |
-| BROKER | str | "localhost:9092" |
-| BROKER_LIST | str | "localhost:9092,other.host:9092" |
-| BROKER_HOSTS | str | "localhost:9092,other.host:9092" |
+| BROKER | str | "localhost:9092,other.host:9092" |
 | ZOOKEEPER | str | "localhost,other.host" |
 | BROKER_KEY | str | "" |
 | BROKER_CERT | str | "" |
