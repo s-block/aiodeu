@@ -9,10 +9,30 @@ pip install -r requirements.txt
 poetry install
 ```
 
-## Test
+## Testing
 ```bash
+flake8
 pytest
 ```
+
+## ENV vars
+| name | type | default |
+| ---- | ---- | ------- |
+| APP_NAME | str | "app_consumer" |
+| TOPIC_NAME | str | "test" |
+| BROKER | str | "localhost:9092" |
+| BROKER_LIST | str | "localhost:9092,other.host:9092" |
+| BROKER_HOSTS | str | "localhost:9092,other.host:9092" |
+| ZOOKEEPER | str | "localhost,other.host" |
+| BROKER_KEY | str | "" |
+| BROKER_CERT | str | "" |
+| BROKER_GROUP_ID | str | "" |
+| AVRO_SCHEMA_REGISTRY | str | "127.0.0.1:8080" |
+| AWS_ACCESS_KEY_ID | str | "" |
+| AWS_SECRET_ACCESS_KEY | str | "" |
+| AWS_S3_BUCKET_NAME | str | "test" |
+| KEY_PREFIX | str | "test/" |
+| AWS_S3_REGION | str | "eu-west-2" |
 
 
 ### Run Kafka
