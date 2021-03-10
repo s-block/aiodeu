@@ -1,7 +1,7 @@
 # Kafka consumer
 
 ## Setup
-```bash
+```shell script
 pyenv install 3.9.0
 pyenv virtualenv 3.9.0 aiodeu
 pyenv shell aiodeu
@@ -10,7 +10,7 @@ poetry install
 ```
 
 ## Testing
-```bash
+```shell script
 flake8
 pytest
 ```
@@ -37,7 +37,7 @@ pytest
 https://kafka.apache.org/quickstart
 
 From Docker:
-```bash
+```shell script
 docker run -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=`docker-machine ip \`docker-machine active\`` --env ADVERTISED_PORT=9092 spotify/kafka
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' {CONTAINER_NAME}
 /opt/kafka_2.11-0.10.1.0/bin/kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic {{topic}} --zookeeper localhost:2181
@@ -45,24 +45,24 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' {CO
 
 Locally:
 https://medium.com/@Ankitthakur/apache-kafka-installation-on-mac-using-homebrew-a367cdefd273
-```bash
+```shell script
 brew cask install java
 brew install kafka
 zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties
 ```
 
 Create topic:
-```bash
+```shell script
 kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic {{topic}}
 ```
 
 List topics:
-```bash
+```shell script
 kafka-topics --list --bootstrap-server localhost:9092
 ```
 
 Delete topic:
-```bash
+```shell script
 kafka-topics --zookeeper localhost:2181 --delete --topic {{topic}}
 ```
 
@@ -72,7 +72,7 @@ Faust consumer setup with certs
 Extract certs from .jks file
 https://serverfault.com/questions/715827/how-to-generate-key-and-crt-file-from-jks-file-for-httpd-apache-server
 
-```bash
+```shell script
 keytool -importkeystore -srckeystore mycert.jks -destkeystore keystore.p12 -deststoretype PKCS12
 openssl pkcs12 -in keystore.p12 -nokeys -out cert.crt
 openssl pkcs12 -in keystore.p12 -nocerts -nodes -out key.key
