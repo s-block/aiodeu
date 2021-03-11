@@ -24,7 +24,8 @@ def create_app(config: Type[Config], faust_app_kwargs: dict = {}) -> faust.App:
         "topic_partitions": 12,
         "topic_allow_declare": False,
         "topic_disable_leader": True,
-        "consumer_auto_offset_reset": "earliest"
+        "consumer_auto_offset_reset": "earliest",
+        # "stream_wait_empty": False
     }
     app_kwargs.update(faust_app_kwargs)
 
