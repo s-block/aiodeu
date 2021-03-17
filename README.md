@@ -78,6 +78,11 @@ openssl pkcs12 -in keystore.p12 -nokeys -out cert.crt
 openssl pkcs12 -in keystore.p12 -nocerts -nodes -out key.key
 ```
 
+Check cert expiry
+```shell script
+keytool -list -v -keystore mycert.jks | grep until
+```
+
 ```python
 # app/agents.py
 import logging
