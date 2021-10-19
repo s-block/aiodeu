@@ -1,3 +1,5 @@
+import csv
+import io
 from itertools import chain
 from typing import Any, Union
 
@@ -77,3 +79,22 @@ def explode_list(data: dict, field: str) -> list:
         d.update({f"{field}.{key}": value for key, value in row.items()})
         data_list.append(d)
     return data_list
+
+
+async def data_to_csv_string(data: list, fieldnames: list = []) -> str:
+    """
+    Convert response to csv string
+
+    :param data:
+    :param fieldnames:
+    :return str:
+    """
+    output = io.StringIO()
+    writer = csv.DictWriter(
+        output,
+        fieldnames or data[0].keys(),
+        quoting=csv.QUOTE_ALL
+    )
+    writer.writeheader()
+    writer.writerows(data)
+    return output.getvalue()
