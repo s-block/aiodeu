@@ -61,22 +61,25 @@ def explode_lists(data: list, field: str) -> list:
     return list(chain(*[explode_list(d, field) for d in data]))
 
 
-def explode_list(data: dict, field: str) -> list:
+def explode_list(data: dict, field: str, prefix: Union[str, None] = None) -> list:
     """
     Explode a dict in to a list of dicts on a particular field that is a nested list. This will duplicate top level
     fields.
 
     :param data:
     :param field:
+    :param prefix:
     :return:
     """
+    if prefix is None:
+        prefix = f"{field}."
     data_list = []
     field_list = data[field]
     top_level_data = {key: value for key, value in data.items() if key != field}
     for row in field_list:
         d = {}
         d.update(top_level_data)
-        d.update({f"{field}.{key}": value for key, value in row.items()})
+        d.update({f"{prefix}{key}": value for key, value in row.items()})
         data_list.append(d)
     return data_list
 
