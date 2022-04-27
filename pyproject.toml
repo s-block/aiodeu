@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aiodeu"
-version = "0.1.8"
+version = "0.1.11"
 description = "aio data engineering utils"
 authors = ["Josh Rowe <s-block@users.noreply.github.com>"]
 homepage = "https://github.com/s-block/aiodeu"
@@ -9,7 +9,7 @@ homepage = "https://github.com/s-block/aiodeu"
 python = "^3.8"
 asyncio-redis = "^0.16.0"
 boto3 = "^1.17.21"
-faust = "^1.10.4"
+faust-streaming = "^0.8.4"
 python-schema-registry-client = "~1.8.1"
 
 [tool.poetry.dev-dependencies]

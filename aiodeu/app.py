@@ -27,12 +27,17 @@ def create_app(config: Type[Config], faust_app_kwargs: dict = {}) -> faust.App:
         "consumer_auto_offset_reset": "earliest",
         # "stream_wait_empty": False
     }
+    cert_verify = faust_app_kwargs.pop("cert_verify", True)
     app_kwargs.update(faust_app_kwargs)
 
     if config.BROKER_CERT:
         cert = write_to_file(os.path.join(config.BASE_DIR, "client.cert"), config.BROKER_CERT)
         key = write_to_file(os.path.join(config.BASE_DIR, "client.key"), config.BROKER_KEY)
-        ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
+        if cert_verify:
+            ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
+        else:
+            ssl_context = ssl._create_unverified_context(purpose=ssl.Purpose.SERVER_AUTH)
+        ssl_context.load_cert_chain(cert, keyfile=key)
         ssl_context.load_cert_chain(cert, keyfile=key)
         app_kwargs.update({
             "broker_credentials": ssl_context
