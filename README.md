@@ -4,6 +4,8 @@
 ```shell script
 brew install pyenv
 brew install pyenv-virtualenv
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 pyenv install 3.9.0
 pyenv virtualenv 3.9.0 aiodeu
 pyenv shell aiodeu
