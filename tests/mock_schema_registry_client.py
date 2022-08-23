@@ -88,7 +88,7 @@ class MockSchemaRegistryClient(object):
                 return
         self.subject_to_latest_schema[subject] = (schema_id, schema, version)
 
-    def register(self, subject, avro_schema):
+    def register(self, subject, avro_schema, schema_type=None):
         """
         Register a schema with the registry under the given subject
         and receive a schema id.

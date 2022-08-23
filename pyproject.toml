@@ -1,15 +1,15 @@
 [tool.poetry]
 name = "aiodeu"
-version = "0.1.12"
+version = "0.1.14"
 description = "aio data engineering utils"
 authors = ["Josh Rowe <s-block@users.noreply.github.com>"]
 homepage = "https://github.com/s-block/aiodeu"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-boto3 = "^1.17.21"
-faust-streaming = "^0.8.4"
-python-schema-registry-client = "~1.8.1"
+boto3 = "^1.24.57"
+faust-streaming = "^0.8.5"
+python-schema-registry-client = "^2.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

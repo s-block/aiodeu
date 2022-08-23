@@ -6,7 +6,7 @@ import boto3
 from moto import mock_s3
 import pytest
 from schema_registry.client import schema
-from schema_registry.serializers import MessageSerializer
+from schema_registry.serializers import AvroMessageSerializer
 
 from aiodeu.app import (
     create_app,
@@ -59,7 +59,7 @@ def test_client():
 
 @pytest.fixture(scope='session')
 def test_message_serializer(test_client):
-    return MessageSerializer(test_client)
+    return AvroMessageSerializer(test_client)
 
 
 class RegistryServerWrapper:
