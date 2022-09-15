@@ -13,6 +13,11 @@ pip install -r requirements.txt
 poetry install
 ```
 
+## Build cython
+```shell script
+cythonize -X language_level=3 -a -i aiodeu/cetl.pyx
+```
+
 ## Testing
 ```shell script
 flake8
