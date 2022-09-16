@@ -26,9 +26,9 @@ import re
 
 from threading import Thread, Event
 
-from tests.mock_schema_registry_client import MockSchemaRegistryClient
-from confluent_kafka import avro
-from confluent_kafka.avro.error import ClientError
+from fastavro import parse_schema
+
+from tests.mock_schema_registry_client import MockSchemaRegistryClient, ClientError
 
 
 if sys.version_info[0] < 3:
@@ -120,7 +120,7 @@ class MockServer(HTTPSERVER.HTTPServer, object):
         if not schema:
             return None
         try:
-            avro_schema = avro.loads(schema)
+            avro_schema = parse_schema(schema)
             return self._get_identity_schema(avro_schema)
         except ClientError:
             return None
