@@ -116,7 +116,7 @@ async def etl(stream):
 
 ```dockerfile
 # Dockerfile
-FROM python:3.9.2-slim-buster
+FROM quay.io/s_block/aiodeu
 
 ARG ENV_TYPE=base
 
@@ -129,7 +129,6 @@ COPY requirements requirements
 RUN pip install -r requirements/$ENV_TYPE.txt
 
 COPY app app
-COPY tests tests
 
 RUN chown -R 1000 /faust
 
