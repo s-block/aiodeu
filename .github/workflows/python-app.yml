@@ -37,4 +37,13 @@ jobs:
             -v $(pwd):/app \
             --rm \
             aiodeu:$GITHUB_SHA \
-            sh -c 'cd /app && pip install pytest pytest-asyncio moto .[faust,aws] && cythonize -X language_level=3 -a -i aiodeu/cetl.pyx && pytest'
+        sh -c 'cd /app && pip install pytest pytest-asyncio moto .[faust,aws] && cythonize -X language_level=3 -a -i aiodeu/cetl.pyx && pytest'
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: aiodeu:$GITHUB_SHA
+        format: 'table'
+        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH,MEDIUM,LOW'
