@@ -108,9 +108,9 @@ topic = app.topic(Config.TOPIC_NAME)
 
 @app.agent(topic)
 async def etl(stream):
-    logger.info("Message received")
-    async for message in stream:
-        for record in message:
+    logger.info("Stream connected")
+    async for records in stream:
+        for record in records:
             logger.info("Record per message")
 ```
 
