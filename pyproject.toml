@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aiodeu"
-version = "0.1.19"
+version = "0.1.20"
 description = "aio data engineering utils"
 authors = ["Josh Rowe <s-block@users.noreply.github.com>"]
 homepage = "https://github.com/s-block/aiodeu"
@@ -8,7 +8,7 @@ build = "build.py"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-faust-streaming = { version = "^0.8.5", extras = ["cython"], optional = true }
+faust-streaming = { version = "^0.8.5", extras = ["cython", "fast"], optional = true }
 python-schema-registry-client = { version = "^2.4.0", optional = true }
 boto3 = { version = "^1.24.57", optional = true }
 
