@@ -15,6 +15,6 @@ async def test_loads(registry_server, test_message_serializer, test_avro_data, t
             schema_id = registry_server.schema_id
             for avro_data in test_avro_data:
                 in_data = json.loads(json.dumps(avro_data, cls=BytesJsonEncoder))
-                serialised = await serializer._dumps(obj=in_data, schema_id=schema_id)
-                out_data = await serializer._loads(serialised)
+                serialised = serializer._dumps(obj=in_data, schema_id=schema_id)
+                out_data = serializer._loads(serialised)
                 assert out_data == in_data
