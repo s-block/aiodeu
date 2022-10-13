@@ -1,6 +1,5 @@
 import json
 import os
-from unittest import mock
 
 import boto3
 from moto import mock_s3
