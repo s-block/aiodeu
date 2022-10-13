@@ -34,7 +34,7 @@ pytest
 | BROKER_KEY | str | "" |
 | BROKER_CERT | str | "" |
 | BROKER_GROUP_ID | str | "" |
-| AVRO_SCHEMA_REGISTRY | str | "127.0.0.1:8080" |
+| AVRO_SCHEMA_REGISTRY | str | "http://127.0.0.1:8080" |
 | AWS_ACCESS_KEY_ID | str | "" |
 | AWS_SECRET_ACCESS_KEY | str | "" |
 | AWS_S3_BUCKET_NAME | str | "test" |

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aiodeu"
-version = "0.1.21"
+version = "0.1.23"
 description = "aio data engineering utils"
 authors = ["Josh Rowe <s-block@users.noreply.github.com>"]
 homepage = "https://github.com/s-block/aiodeu"

@@ -1,6 +1,9 @@
 import os
 
 
+REG_ENDPOINT = os.environ.get("AVRO_SCHEMA_REGISTRY", "http://127.0.0.1:8080").rstrip()
+
+
 class Config:
     DEBUG: bool = False
     APP_NAME: str = os.environ.get("APP_NAME", "app_consumer").rstrip()
@@ -13,7 +16,7 @@ class Config:
     BROKER_KEY: str = os.environ.get("BROKER_KEY", "")
     BROKER_CERT: str = os.environ.get("BROKER_CERT", "")
     BROKER_GROUP_ID: str = os.environ.get("BROKER_GROUP_ID", "").rstrip()
-    AVRO_SCHEMA_REGISTRY: str = f'http://{os.environ.get("AVRO_SCHEMA_REGISTRY", "127.0.0.1:8080").rstrip()}'
+    AVRO_SCHEMA_REGISTRY: str = f"http://{REG_ENDPOINT}" if not REG_ENDPOINT.startswith("http") else REG_ENDPOINT
     AWS_ACCESS_KEY_ID: str = os.environ.get("AWS_ACCESS_KEY_ID", "").rstrip()
     AWS_SECRET_ACCESS_KEY: str = os.environ.get("AWS_SECRET_ACCESS_KEY", "").rstrip()
     AWS_S3_BUCKET_NAME: str = os.environ.get("AWS_S3_BUCKET_NAME", "test").rstrip()

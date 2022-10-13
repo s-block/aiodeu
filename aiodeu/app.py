@@ -10,8 +10,6 @@ from aiodeu.codecs import AvroJsonCodec
 from aiodeu.config import Config
 from aiodeu.utils import write_to_file
 
-codecs.register('AvroJsonCodec', AvroJsonCodec())
-
 logger = logging.getLogger(__name__)
 
 
@@ -29,6 +27,7 @@ def create_app(config: Type[Config], faust_app_kwargs: dict = {}) -> faust.App:
     }
     cert_verify = faust_app_kwargs.pop("cert_verify", True)
     app_kwargs.update(faust_app_kwargs)
+    codecs.register('AvroJsonCodec', AvroJsonCodec(config=config))
 
     if config.BROKER_CERT:
         cert = write_to_file(os.path.join(config.BASE_DIR, "client.cert"), config.BROKER_CERT)

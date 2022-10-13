@@ -94,13 +94,11 @@ def registry_server(test_message_serializer, test_client):
 @pytest.fixture()
 def test_app(event_loop, test_message_serializer, test_client):
     """passing in event_loop helps avoid 'attached to a different loop' error"""
-    with mock.patch('aiodeu.codecs.message_serializer', test_message_serializer):
-        with mock.patch('aiodeu.codecs.client', test_client):
-            app = create_app(Config)
-            app.finalize()
-            app.conf.store = 'memory://'
-            app.flow_control.resume()
-            yield app
+    app = create_app(Config)
+    app.finalize()
+    app.conf.store = 'memory://'
+    app.flow_control.resume()
+    yield app
 
 
 @pytest.fixture()
