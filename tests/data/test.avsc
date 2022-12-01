@@ -4,17 +4,17 @@
   "namespace" : "com.miguno.avro",
   "fields" : [ {
     "name" : "username",
-    "type" : "string",
+    "type" : ["null" ,"string"],
     "doc" : "Name of the user account on Twitter.com",
     "default": null
   }, {
     "name" : "tweet",
-    "type" : "string",
+    "type" : ["null" ,"string"],
     "doc" : "The content of the user's Twitter message",
     "default": null
   }, {
     "name" : "timestamp",
-    "type" : "long",
+    "type" : ["null" ,"long"],
     "doc" : "Unix epoch time in seconds",
     "default": null
   } ],

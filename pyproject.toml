@@ -7,22 +7,20 @@ homepage = "https://github.com/s-block/aiodeu"
 build = "build.py"
 
 [tool.poetry.dependencies]
-python = "^3.8"
-faust-streaming = { version = "^0.8.5", extras = ["cython", "fast"], optional = true }
-python-schema-registry-client = { version = "^2.4.0", optional = true }
-boto3 = { version = "^1.24.57", optional = true }
+python = ">=3.8.1,<4.0"
+faust-streaming = { version = "^0.10.0", extras = ["cython", "fast"], optional = true }
+python-schema-registry-client = { version = "^2.4.1", optional = true }
+boto3 = { version = "^1.26.20", optional = true }
 
 [tool.poetry.extras]
 faust = ["faust-streaming", "python-schema-registry-client"]
 aws = ["boto3"]
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
-avro-python3 = "^1.10.1"
-confluent-kafka = "^1.6.0"
-flake8 = "^3.8.4"
-moto = "^2.0.1"
-pytest-asyncio = "^0.14.0"
+pytest = "^7.2.0"
+flake8 = "^6.0.0"
+moto = "^4.0.11"
+pytest-asyncio = "^0.20.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "cython", "setuptools"]
