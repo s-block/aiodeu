@@ -1,7 +1,7 @@
 from itertools import chain
 
 
-cpdef get_field(str dot_path, record):
+cpdef object get_field(str dot_path, object record):
     """
     Returns data in dict with dot path
 
@@ -31,7 +31,7 @@ cpdef get_field(str dot_path, record):
         return record
 
 
-cpdef get_conditional_data(list items, str dot_path, values):
+cpdef object get_conditional_data(list items, str dot_path, object values):
     """
     Returns contitional data from within a dict
 
