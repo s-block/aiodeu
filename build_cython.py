@@ -10,8 +10,8 @@ except ImportError:
         pass
 # Cython is installed. Compile
 else:
-    from setuptools import Extension
-    from setuptools.dist import Distribution
+    from setuptools import Extension  # noqa
+    from setuptools.dist import Distribution  # noqa
     from distutils.command.build_ext import build_ext
 
     # This function will be executed in setup.py:
