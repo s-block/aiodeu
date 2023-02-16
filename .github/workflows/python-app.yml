@@ -37,7 +37,7 @@ jobs:
             -v $(pwd):/app \
             --rm \
             aiodeu:$GITHUB_SHA \
-            sh -c 'cd /app && pip install Cython pytest pytest-asyncio moto .[faust,aws] && mv aiodeu xaiodeu && pytest && mv xaiodeu aiodeu'
+            sh -c 'cd /app && pip install -U pip setuptools && pip install Cython pytest pytest-asyncio moto .[faust,aws] && mv aiodeu xaiodeu && pytest && mv xaiodeu aiodeu'
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
