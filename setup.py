@@ -13,7 +13,7 @@ package_data = {"": ["*"]}
 extras_require = {
     "aws": ["boto3>=1.26.20,<2.0.0"],
     "faust": [
-        "faust-streaming[cython,fast]>=0.10.4,<0.11.0",
+        "faust-streaming[cython,fast]>=0.10.3,<0.10.4",
         "python-schema-registry-client>=2.4.1,<3.0.0",
     ],
 }
@@ -22,7 +22,7 @@ entry_points = {"console_scripts": ["aiodeu = aiodeu.console:main"]}
 
 setup_kwargs = {
     "name": "aiodeu",
-    "version": "0.1.30",
+    "version": "0.1.31",
     "description": "aio data engineering utils",
     "long_description": "None",
     "author": "Josh Rowe",
