@@ -1,1 +1,2 @@
 poetry==1.1.5
+twine

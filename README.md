@@ -18,6 +18,12 @@ poetry install
 cythonize -X language_level=3 -a -i aiodeu/cetl.pyx
 ```
 
+## Push to Pypi
+```shell script
+python setup.py sdist
+twine upload dist/*
+```
+
 ## Testing
 ```shell script
 flake8
