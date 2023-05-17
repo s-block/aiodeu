@@ -1,0 +1,13 @@
+[package]
+name = "retl"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+name = "retl"
+path = "aiodeu/retl.rs"
+crate-type = ["cdylib"]
+
+[dependencies.pyo3]
+version = "0.12.3"
+features = ["extension-module", "macros"]

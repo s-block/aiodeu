@@ -18,6 +18,11 @@ poetry install
 cythonize -X language_level=3 -a -i aiodeu/cetl.pyx
 ```
 
+## Build Rust
+```shell script
+cargo build --release && cp target/release/libretl.dylib aiodeu/retl.so
+```
+
 ## Push to Pypi
 ```shell script
 python setup.py sdist
