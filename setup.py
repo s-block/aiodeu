@@ -22,7 +22,7 @@ entry_points = {"console_scripts": ["aiodeu = aiodeu.console:main"]}
 
 setup_kwargs = {
     "name": "aiodeu",
-    "version": "0.1.31",
+    "version": "0.1.32",
     "description": "aio data engineering utils",
     "long_description": "None",
     "author": "Josh Rowe",
