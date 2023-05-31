@@ -13,7 +13,7 @@ package_data = {"": ["*"]}
 extras_require = {
     "aws": ["boto3>=1.26.20,<2.0.0"],
     "faust": [
-        "faust-streaming[cython,fast]>=0.10.3,<0.10.4",
+        "faust-streaming[cython,fast]>=0.10.13,<0.10.14",
         "python-schema-registry-client>=2.4.1,<3.0.0",
     ],
 }
