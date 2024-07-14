@@ -2,7 +2,7 @@ import json
 import os
 
 import boto3
-from moto import mock_s3
+from moto import mock_aws
 import pytest
 from schema_registry.client import schema
 from schema_registry.serializers import AvroMessageSerializer
@@ -34,7 +34,7 @@ def test_avro_data():
 
 @pytest.fixture(scope='session', autouse=True)
 def s3_resource():
-    with mock_s3():
+    with mock_aws():
         s3 = boto3.resource('s3', region_name="eu-west-2")
         yield s3
 
