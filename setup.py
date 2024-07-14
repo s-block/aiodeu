@@ -13,7 +13,7 @@ package_data = {"": ["*"]}
 extras_require = {
     "aws": ["boto3>=1.26.20,<2.0.0"],
     "faust": [
-        "faust-streaming[cython,fast]>=0.10.13,<0.10.14",
+        "faust-streaming[cython,fast]>=0.10.14,<0.12.0",
         "python-schema-registry-client>=2.4.1,<3.0.0",
     ],
 }
@@ -22,7 +22,7 @@ entry_points = {"console_scripts": ["aiodeu = aiodeu.console:main"]}
 
 setup_kwargs = {
     "name": "aiodeu",
-    "version": "0.1.32",
+    "version": "0.1.33",
     "description": "aio data engineering utils",
     "long_description": "None",
     "author": "Josh Rowe",
@@ -54,7 +54,7 @@ try:
             "cmdclass": {"build_ext": build_ext},
         }
     )
-except ImportError:
+except (ImportError, ModuleNotFoundError):
     pass
 
 setup(**setup_kwargs)
